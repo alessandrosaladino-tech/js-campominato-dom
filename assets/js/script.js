@@ -10,7 +10,11 @@ Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro ed 
 
 const gridEl = document.querySelector(".field");
 const button = document.getElementById("generate");
+const bombs = 16;
 const limit = 100;
+let cellNumber;
+let difficulty;
+
 
 
 //Genero un ciclo per stampare in pagina tramite il bottone la griglia tramite eventListener e un ciclo for
@@ -35,20 +39,32 @@ button.addEventListener("click", function (ev) {
 
 
 
-// creare ciclo per aggiungere le bombe alla tabella
-/*
-for (let i = 0; i < ; i++) {
-    const element = array i];
-    
-}
-*/
+// creare ciclo per aggiungere le bombe all'array
+
+
+
 
 //Creare generatore di bombe
-const bombs = []
-function bombGeneretor() {
-    const bomb = Math.floor(Math.random() * 16) + 1;
-    bombs.append(bomb)
+/**
+ * 
+ * @param {number} bombNumber  
+ * @returns {number[]} 
+ */
+function bombGeneretor(bombNumber) {
+    const bombs = [];
+    let bomb;
+
+    for (let i = 0; i < bombNumber; i++) {
+        bomb = Math.floor(Math.random() * cellNumber) ;
+        if (!bombs.includes(bomb)) {
+            bombs[i] = bomb;
+            
+        } else {
+            bombs[i = bomb]
+        }
+    }
+
     return bombs
 }
 
-console.log(bombs)
+console.log(bombGeneretor(16));
