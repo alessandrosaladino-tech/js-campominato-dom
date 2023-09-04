@@ -43,7 +43,7 @@ button.addEventListener("click", function (ev) {
 
 
 
-//creo una funzione per generare il campo di battaglia
+//creo una funzione per generare il campo di battaglia e aggiungo l'eventlistener al click
 function generateField(DOMelement, numberOfSquare) {
 
     const bombs = bombGeneretor(16)
@@ -61,7 +61,7 @@ function generateField(DOMelement, numberOfSquare) {
         gridEl.append(fieldEl)
 
         fieldEl.addEventListener("click", function () {
-            checkBomb(squareNumber, bombs, fieldEl)
+            checkBomb(i + 1, bombs, fieldEl)
 
         })
     }
