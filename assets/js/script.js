@@ -7,42 +7,89 @@ Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro ed 
 
 // Collego l'elemento della dom a una variabile
 
-
 const gridEl = document.querySelector(".field");
+
 const button = document.getElementById("generate");
-const limit = 100;
+let numberOfSquare;
+bombNumber = 16;
 
 
 
 //Genero un ciclo per stampare in pagina tramite il bottone la griglia tramite eventListener e un ciclo for
 button.addEventListener("click", function (ev) {
-    gridEl.innerHTML = ""
-    for (let i = 0; i < limit; i++) {
-        const fieldEl = document.createElement("div")
-        fieldEl.classList = "text-center col_10 border cell "
-        fieldEl.append(i + 1)
-        gridEl.append(fieldEl)
+    ev.preventDefault();
 
 
-        fieldEl.addEventListener("click", function () {
+    const difficultyDOM = document.getElementById("difficulty");
+    console.log(difficultyDOM.value);
 
-            if (fieldEl[i] === bombGeneretor(16)) {
-
-            }
-
-            fieldEl.classList.toggle("bg_active")
-            fieldEl.classList.toggle("active_color")
-            console.log(`Cella ${i + 1} cliccata`)
-        })
+    if (difficultyDOM.value === "difficulty1") {
+        numberOfSquare = 100;
+        generateField(gridEl, 100)
+    } else if (difficultyDOM.value === "difficulty2") {
+        numberOfSquare = 81;
+        generateField(gridEl, 81)
+    } else if (difficultyDOM.value === "difficulty3") {
+        numberOfSquare = 49
+        generateField(gridEl, 49)
     }
 
-    ev.preventDefault()
 })
 
 
 
-// creo una funzione che generi il campo
 
+
+
+
+
+//creo una funzione per generare il campo di battaglia
+function generateField(DOMelement, numberOfSquare) {
+
+    const bombs = bombGeneretor(16)
+
+    let points = 0
+
+    console.log(bombs);
+
+
+    for (let i = 0; i < numberOfSquare; i++) {
+        const fieldEl = document.createElement("div");
+        fieldEl.classList = "text-center col_10 border cell ";
+        squareNumber = i + 1;
+        fieldEl.append(squareNumber)
+        gridEl.append(fieldEl)
+
+        fieldEl.addEventListener("click", function () {
+            checkBomb(squareNumber, bombs, fieldEl)
+
+        })
+    }
+}
+
+// creo una funzione che controlli le bombe presenti nel campo
+function checkBomb(squareNumber, bombs, DOMelement) {
+
+    let points = 0;
+
+    if (bombs.includes(squareNumber)) {
+
+        DOMelement.classList.add('bg_red')
+
+    } else {
+
+        DOMelement.classList.add('bg_active')
+
+        points++;
+
+    }
+    console.log(points);
+
+    document.getElementById('result').innerHTML = points;
+
+    return points;
+
+}
 
 
 
@@ -53,17 +100,17 @@ button.addEventListener("click", function (ev) {
  * @returns {number} 
  */
 function bombGeneretor(bombNumber) {
-
+    bombNumber = 16;
     const bombs = [];
     let bomb;
 
     for (let i = 0; i < bombNumber; i++) {
 
-        bomb = Math.floor(Math.random() * limit);
+        bomb = Math.floor(Math.random() * numberOfSquare);
 
         if (!bombs.includes(bomb)) {
             bombs.push(bomb);
-        }else{
+        } else {
             i--;
         }
 
@@ -72,5 +119,3 @@ function bombGeneretor(bombNumber) {
 
     return bombs
 }
-
-console.log(bombGeneretor(16))
