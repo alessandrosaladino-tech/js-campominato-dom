@@ -56,18 +56,32 @@ function generateField(DOMelement, numberOfSquare) {
     for (let i = 0; i < numberOfSquare; i++) {
         const fieldEl = document.createElement("div");
         fieldEl.classList = "text-center col_10 border cell ";
-        squareNumber = i + 1;
+        const squareNumber = i + 1;
         fieldEl.append(squareNumber)
         gridEl.append(fieldEl)
 
-        fieldEl.addEventListener("click", function () {
-            checkBomb(i + 1, bombs, fieldEl)
+        fieldEl.addEventListener("click", function (ev) {
+            ev.preventDefault()
+            if (bombs.includes(squareNumber)) {
+                fieldEl.classList.add ("bg_red")
+                const resultDOM =  document.getElementById("result");
+                resultDOM.classList.add("end_square")
+                document.getElementById("result").innerHTML = `You lose, Points: ${points}`
+                fieldEl.removeEventListener("click", Event);
+            } else {
+                fieldEl.classList.add ("bg_active");
+                fieldEl.removeEventListener("click", Event)
+                ++points;
+                document.getElementById("result").innerHTML = points;
+                console.log(squareNumber)
+            }
 
         })
     }
 }
 
 // creo una funzione che controlli le bombe presenti nel campo
+/*
 function checkBomb(squareNumber, bombs, DOMelement) {
 
     let points = 0;
@@ -80,7 +94,7 @@ function checkBomb(squareNumber, bombs, DOMelement) {
 
         DOMelement.classList.add('bg_active')
 
-        points++;
+        points = + 1;
 
     }
     console.log(points);
@@ -90,6 +104,7 @@ function checkBomb(squareNumber, bombs, DOMelement) {
     return points;
 
 }
+*/
 
 
 

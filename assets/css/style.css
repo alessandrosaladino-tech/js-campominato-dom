@@ -17,7 +17,7 @@ body {
 .field {
     display: flex;
     flex-wrap: wrap;
-    width: 55%;
+    width: 80%;
     margin: auto;
     margin-top: 1rem;
 }
@@ -37,10 +37,28 @@ body {
     color: #041424;
 }
 
-.darkblue{
+.darkblue {
     color: #041424;
 }
 
 .bg_red {
     background-color: red;
+}
+
+.end_square {
+    background-color: white;
+    width: 40%;
+    height: 300px;
+    position: absolute;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 600px;
+    text-align: center;
+}
+
+.p-rel {
+    position: relative;
 }
