@@ -66,7 +66,7 @@ function generateField(DOMelement, numberOfSquare) {
                 fieldEl.classList.add ("bg_red")
                 const resultDOM =  document.getElementById("result");
                 resultDOM.classList.add("end_square")
-                document.getElementById("result").innerHTML = `You lose, Points: ${points}`
+                document.getElementById("result").innerHTML = `&#9940 You lose! Current Points: ${points}. RESET AND RETRY !`
                 fieldEl.removeEventListener("click", Event);
             } else {
                 fieldEl.classList.add ("bg_active");
@@ -134,3 +134,8 @@ function bombGeneretor(bombNumber) {
 
     return bombs
 }
+
+
+document.getElementById('reset').addEventListener('click', function () {
+    location.reload();
+})
