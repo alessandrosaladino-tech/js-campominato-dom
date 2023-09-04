@@ -10,10 +10,7 @@ Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro ed 
 
 const gridEl = document.querySelector(".field");
 const button = document.getElementById("generate");
-const bombs = 16;
 const limit = 100;
-let cellNumber;
-let difficulty;
 
 
 
@@ -28,6 +25,9 @@ button.addEventListener("click", function (ev) {
 
 
         fieldEl.addEventListener("click", function () {
+            if (fieldEl[i] === bombGeneretor(16)) {
+                
+            }
             fieldEl.classList.toggle("bg_active")
             fieldEl.classList.toggle("active_color")
             console.log(`Cella ${i + 1} cliccata`)
@@ -39,7 +39,7 @@ button.addEventListener("click", function (ev) {
 
 
 
-// creare ciclo per aggiungere le bombe all'array
+// creo una funzione che generi il campo
 
 
 
@@ -48,23 +48,21 @@ button.addEventListener("click", function (ev) {
 /**
  * 
  * @param {number} bombNumber  
- * @returns {number[]} 
+ * @returns {number} 
  */
 function bombGeneretor(bombNumber) {
     const bombs = [];
     let bomb;
 
     for (let i = 0; i < bombNumber; i++) {
-        bomb = Math.floor(Math.random() * cellNumber) ;
+        bomb = Math.floor(Math.random() * 16) ;
         if (!bombs.includes(bomb)) {
             bombs[i] = bomb;
-            
-        } else {
-            bombs[i = bomb]
         }
     }
+
 
     return bombs
 }
 
-console.log(bombGeneretor(16));
+console.log(bombGeneretor(16))
