@@ -16,7 +16,9 @@ difficoltà 3 ⇒ 49 caselle, con un numero compreso tra 1 e 49, divise in 7 cas
 const gridEl = document.querySelector(".field");
 
 const button = document.getElementById("generate");
+
 let numberOfSquare;
+
 bombNumber = 16;
 
 
@@ -30,14 +32,22 @@ button.addEventListener("click", function (ev) {
     console.log(difficultyDOM.value);
 
     if (difficultyDOM.value === "difficulty1") {
+
         numberOfSquare = 100;
-        generateField(gridEl, 100)
+
+        generateField(gridEl, 100);
+
     } else if (difficultyDOM.value === "difficulty2") {
+
         numberOfSquare = 81;
-        generateField(gridEl, 81)
+
+        generateField(gridEl, 81);
+
     } else if (difficultyDOM.value === "difficulty3") {
-        numberOfSquare = 49
-        generateField(gridEl, 49)
+
+        numberOfSquare = 49;
+
+        generateField(gridEl, 49);
     }
 
 })
@@ -60,25 +70,40 @@ function generateField(DOMelement, numberOfSquare) {
 
 
     for (let i = 0; i < numberOfSquare; i++) {
+
         const fieldEl = document.createElement("div");
+
         fieldEl.classList = "text-center col_10 border cell ";
+
         const squareNumber = i + 1;
-        fieldEl.append(squareNumber)
-        gridEl.append(fieldEl)
+
+        fieldEl.append(squareNumber);
+
+        gridEl.append(fieldEl);
+
 
         fieldEl.addEventListener("click", function generate () {
+
             if (bombs.includes(squareNumber)) {
-                fieldEl.classList.add ("bg_red")
+                fieldEl.classList.add ("bg_red");
+
                 const resultDOM =  document.getElementById("result");
-                resultDOM.classList.add("end_square")
+
+                resultDOM.classList.add("end_square");
+
                 document.getElementById("result").innerHTML = `&#9940 You lose! Current Points: ${points}. RESET AND RETRY !`
+
                 fieldEl.removeEventListener("click", generate);
             } else {
                 fieldEl.classList.add ("bg_active");
-                fieldEl.removeEventListener("click", generate)
+
+                fieldEl.removeEventListener("click", generate);
+
                 ++points;
+
                 document.getElementById("result").innerHTML = points;
-                console.log(squareNumber)
+
+                console.log(squareNumber);
             }
 
         })
