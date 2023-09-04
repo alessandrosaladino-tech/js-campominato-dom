@@ -50,7 +50,6 @@ body {
     width: 30%;
     height: 200px;
     position: absolute;
-    position: absolute;
     margin-left: auto;
     margin-right: auto;
     left: 0;
@@ -62,4 +61,12 @@ body {
 
 .p-rel {
     position: relative;
+}
+
+.point_square {
+    background-color: white;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
 }

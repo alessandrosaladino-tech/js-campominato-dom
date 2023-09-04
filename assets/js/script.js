@@ -60,17 +60,16 @@ function generateField(DOMelement, numberOfSquare) {
         fieldEl.append(squareNumber)
         gridEl.append(fieldEl)
 
-        fieldEl.addEventListener("click", function (ev) {
-            ev.preventDefault()
+        fieldEl.addEventListener("click", function generate () {
             if (bombs.includes(squareNumber)) {
                 fieldEl.classList.add ("bg_red")
                 const resultDOM =  document.getElementById("result");
                 resultDOM.classList.add("end_square")
                 document.getElementById("result").innerHTML = `&#9940 You lose! Current Points: ${points}. RESET AND RETRY !`
-                fieldEl.removeEventListener("click", Event);
+                fieldEl.removeEventListener("click", generate);
             } else {
                 fieldEl.classList.add ("bg_active");
-                fieldEl.removeEventListener("click", Event)
+                fieldEl.removeEventListener("click", generate)
                 ++points;
                 document.getElementById("result").innerHTML = points;
                 console.log(squareNumber)
@@ -79,33 +78,6 @@ function generateField(DOMelement, numberOfSquare) {
         })
     }
 }
-
-// creo una funzione che controlli le bombe presenti nel campo
-/*
-function checkBomb(squareNumber, bombs, DOMelement) {
-
-    let points = 0;
-
-    if (bombs.includes(squareNumber)) {
-
-        DOMelement.classList.add('bg_red')
-
-    } else {
-
-        DOMelement.classList.add('bg_active')
-
-        points = + 1;
-
-    }
-    console.log(points);
-
-    document.getElementById('result').innerHTML = points;
-
-    return points;
-
-}
-*/
-
 
 
 //Creare generatore di bombe
