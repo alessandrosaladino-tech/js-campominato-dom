@@ -25,9 +25,11 @@ button.addEventListener("click", function (ev) {
 
 
         fieldEl.addEventListener("click", function () {
+
             if (fieldEl[i] === bombGeneretor(16)) {
-                
+
             }
+
             fieldEl.classList.toggle("bg_active")
             fieldEl.classList.toggle("active_color")
             console.log(`Cella ${i + 1} cliccata`)
@@ -51,14 +53,20 @@ button.addEventListener("click", function (ev) {
  * @returns {number} 
  */
 function bombGeneretor(bombNumber) {
+
     const bombs = [];
     let bomb;
 
     for (let i = 0; i < bombNumber; i++) {
-        bomb = Math.floor(Math.random() * 16) ;
+
+        bomb = Math.floor(Math.random() * limit);
+
         if (!bombs.includes(bomb)) {
-            bombs[i] = bomb;
+            bombs.push(bomb);
+        }else{
+            i--;
         }
+
     }
 
 
