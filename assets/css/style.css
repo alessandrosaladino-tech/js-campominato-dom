@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    background-color: #041424;
+}
+
+.col_10 {
+    width: calc(100% / 10);
+    height: 100px
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.bg_active {
+    background-color: #7cfcd4;
+}
+
+.active_color {
+    color: #041424;
+}
+
+.darkblue{
+    color: #041424;
+}
