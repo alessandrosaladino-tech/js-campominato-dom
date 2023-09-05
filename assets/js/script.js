@@ -82,7 +82,7 @@ function generateField(DOMelement, numberOfSquare) {
         gridEl.append(fieldEl);
 
 
-        fieldEl.addEventListener("click", function generate () {
+        fieldEl.addEventListener("click", function generate() {
 
             if (bombs.includes(squareNumber)) {
                 fieldEl.classList.add ("bg_red");
